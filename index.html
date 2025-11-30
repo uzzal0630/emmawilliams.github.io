@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dating Offer — Landing Template</title>
+  <meta name="description" content="Dating offer landing page template. Replace placeholder images with your own 18+ images." />
+  <style>
+    /* --- Simple, modern styling --- */
+    :root{--accent:#ff476f;--muted:#6b7280;--bg:#0f1724;--card:#0b1220}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0;background:linear-gradient(180deg,#071024 0%,#071424 100%);color:#e6eef8}
+    .container{max-width:980px;margin:40px auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:700;letter-spacing:0.4px}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:22px;border-radius:14px;box-shadow:0 6px 24px rgba(2,6,23,0.6)}
+    h1{font-size:28px;margin:0 0 8px}
+    p.lead{color:var(--muted);margin:0 0 18px}
+
+    /* image column */
+    .gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .img-wrap{position:relative;border-radius:10px;overflow:hidden;cursor:pointer}
+    .img-wrap img{display:block;width:100%;height:100%;object-fit:cover;vertical-align:middle}
+    .badge{position:absolute;left:10px;top:10px;background:rgba(0,0,0,0.5);padding:6px 8px;border-radius:8px;font-size:12px}
+
+    /* CTA */
+    .cta{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;background:var(--accent);color:#fff;font-weight:600;text-decoration:none}
+    .features{display:flex;gap:12px;margin-top:16px}
+    .feature{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;font-size:14px;color:var(--muted)}
+
+    /* reviews */
+    .reviews{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+    .review{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;font-size:13px}
+
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* responsiveness */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .gallery{grid-template-columns:1fr 1fr}
+    }
+
+    /* modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:60}
+    .modal .modal-card{width:min(920px,96%);background:#071125;padding:18px;border-radius:12px}
+    .age-check{display:flex;gap:12px;align-items:center}
+    .btn{cursor:pointer}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 14px;border-radius:8px}
+    .btn.primary{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px}
+
+    .lightbox-img{max-height:70vh;max-width:100%}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">FlareDates</div>
+      <nav aria-label="top navigation">
+        <a href="#cta" class="cta">Join Now</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="card">
+          <h1>Meet local singles — instant matches, private chats</h1>
+          <p class="lead">Join thousands of adults who found real connections. Replace the placeholder photos with your own 18+ images. All members must be over 18.</p>
+
+          <div>
+            <a id="cta" class="cta" href="#" onclick="handleCTA(event)">Claim Your Free Trial</a>
+            <div class="features">
+              <div class="feature">Instant Matches</div>
+              <div class="feature">Secure Chat</div>
+              <div class="feature">Verified Profiles</div>
+            </div>
+          </div>
+
+          <div class="reviews" aria-live="polite">
+            <div class="review">⭐️⭐️⭐️⭐️⭐️ — "Great matches!" — Maya</div>
+            <div class="review">⭐️⭐️⭐️⭐️ — "Easy to use." — Alex</div>
+            <div class="review">⭐️⭐️⭐️⭐️⭐️ — "Met someone special." — Daniel</div>
+          </div>
+        </div>
+
+        <footer>
+          <small>18+ only. By entering you confirm you are at least 18 years old. Please use legal, licensed photos or your own content.</small>
+        </footer>
+      </div>
+
+      <aside>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <strong>Featured Singles</strong>
+            <small class="muted">Updated daily</small>
+          </div>
+
+          <div class="gallery">
+            <!-- Replace these src attributes with your own adult-photo URLs. -->
+            <div class="img-wrap" tabindex="0" role="button" onclick="openLightbox('images/photo1.jpg')">
+              <span class="badge">28 • New</span>
+              <img src="images/photo1.jpg" alt="Profile 1 — replace with your image" />
+            </div>
+            <div class="img-wrap" tabindex="0" role="button" onclick="openLightbox('images/photo2.jpg')">
+              <span class="badge">23 • Nearby</span>
+              <img src="images/photo2.jpg" alt="Profile 2 — replace with your image" />
+            </div>
+            <div class="img-wrap" tabindex="0" role="button" onclick="openLightbox('images/photo3.jpg')">
+              <span class="badge">30 • Verified</span>
+              <img src="images/photo3.jpg" alt="Profile 3 — replace with your image" />
+            </div>
+            <div class="img-wrap" tabindex="0" role="button" onclick="openLightbox('images/photo4.jpg')">
+              <span class="badge">26 • Hot</span>
+              <img src="images/photo4.jpg" alt="Profile 4 — replace with your image" />
+            </div>
+          </div>
+
+          <p style="margin-top:12px;color:var(--muted);font-size:13px">Tip: use tasteful, non-explicit profile photos for best compliance with ad platforms. Keep faces visible and consent documented.</p>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <!-- Lightbox / Age gate modal -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="flex:1">
+          <h3>Age verification required</h3>
+          <p style="color:var(--muted)">This content is for adults only. Confirm that you are 18 years or older to continue.</p>
+          <div class="age-check">
+            <button class="btn primary" onclick="confirmAge(true)">I am 18+</button>
+            <button class="btn secondary" onclick="confirmAge(false)">I am under 18</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lightbox" class="modal">
+    <div class="modal-card" style="text-align:center">
+      <button style="float:right;margin:-8px -8px 0 0" class="btn secondary" onclick="closeLightbox()">✕</button>
+      <img id="lightboxImg" class="lightbox-img" src="" alt="Expanded profile" />
+      <div style="margin-top:10px">
+        <a class="cta" href="#" onclick="handleCTA(event)">Start Chatting</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Basic age gate that requires confirmation before viewing images.
+    const modal = document.getElementById('modal');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    function showModal(){ modal.style.display='flex' }
+    function hideModal(){ modal.style.display='none' }
+
+    function confirmAge(isAdult){
+      if(isAdult){
+        hideModal();
+      } else {
+        alert('You must be 18 or older to view this content.');
+      }
+    }
+
+    // Open lightbox only after age confirmation
+    function openLightbox(src){
+      if(modal.style.display==='flex'){
+        alert('Please confirm your age first.');
+        return;
+      }
+      lightboxImg.src = src;
+      lightbox.style.display = 'flex';
+    }
+    function closeLightbox(){ lightbox.style.display='none'; lightboxImg.src=''}
+
+    // CTA handler — replace the URL with your offer / tracking link
+    function handleCTA(e){
+      e.preventDefault();
+      const offerUrl = 'https://your-affiliate-link.example/?offer=dating';
+      // open in new tab — adapt as needed
+      window.open(offerUrl, '_blank');
+    }
+
+    // Show age modal on first visit to the page
+    document.addEventListener('DOMContentLoaded', ()=>{
+      // small check: if user previously confirmed in this session, don't show
+      if(sessionStorage.getItem('confirmedAdult')!=='true'){
+        showModal();
+      }
+    });
+
+    function confirmAge(isAdult){
+      if(isAdult){
+        sessionStorage.setItem('confirmedAdult','true');
+        hideModal();
+      } else {
+        alert('You must be 18 or older to view this content.');
+        window.location.href = 'about:blank';
+      }
+    }
+  </script>
+
+  <!--
+    NOTES:
+    - Replace `images/photoX.jpg` with your licensed / user-uploaded adult images.
+    - Ensure you have age-consent and rights to use every photo.
+    - Avoid explicit or pornographic imagery if you plan to run ads — many platforms disallow explicit content.
+    - Replace `offerUrl` with your tracking/affiliate link.
+  -->
+</body>
+</html>
